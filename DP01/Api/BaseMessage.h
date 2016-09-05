@@ -89,10 +89,11 @@ class CQuoteMsg : public CBaseMessage {
 public:
 	CQuoteMsg(std::wstring& symbol, int asset_type, unsigned char* pFields, LCID locale_id, unsigned long msg_event, bool periodic, unsigned long msg_arg, DirectorSignatures::CallbackQuoteGet& cb) :
 	CBaseMessage(quote, symbol, asset_type, msg_event, msg_arg, std::string((char const *)pFields)), callback(cb), periodic(periodic), locale_id_(locale_id) {}
-	
+
 	virtual void SetFreeMessage();
 	void SetQuoteMsg(MsgTypes i_type, std::wstring& i_symbol, int i_asset_type, unsigned long i_msg_event, unsigned long i_msg_arg, std::string & i_field, DirectorSignatures::CallbackQuoteGet& i_cb, bool i_periodic, LCID i_locale_id);
-	
+	void SetQuoteMsg(CQuoteMsg& msg);
+
 	bool periodic;
 	LCID locale_id_;
 	DirectorSignatures::CallbackQuoteGet callback;

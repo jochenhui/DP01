@@ -64,3 +64,17 @@ void CQuoteMsg::SetQuoteMsg(MsgTypes i_type, std::wstring& i_symbol, int i_asset
 	locale_id_ = i_locale_id;
 	
 }
+
+void CQuoteMsg::SetQuoteMsg(CQuoteMsg& msg)
+{
+	m_msgType = msg.m_msgType;
+	symbol = msg.symbol;
+	asset_type = msg.asset_type;
+	event = msg.event;
+	callback_argument = msg.callback_argument;
+	fields = msg.fields;
+
+	callback = msg.callback;
+	periodic = msg.periodic;
+	locale_id_ = msg.locale_id_;
+}

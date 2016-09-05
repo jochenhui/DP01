@@ -8,7 +8,7 @@ using namespace std::tr1;
 
 using namespace NS_FEIMA;
 using namespace DP_MESSAGE;
-ApiHandle::ApiHandle()
+ApiHandle::ApiHandle() :ConnectionState_(DirectorStatus::Shutdown)
 {
 	init_currencies();
 	init_messageChain();
@@ -17,6 +17,7 @@ ApiHandle::ApiHandle()
 	/* ----------------------------------------------------------------------------------- */
 	/* exchanges等等不能在这里初始化，因为要Initialize调用之后才能初始化 */
 	ProcessMessageCallback_ = nullptr;
+	periodic_intervals = 1;
 }
 
 ApiHandle::~ApiHandle()
@@ -24,6 +25,8 @@ ApiHandle::~ApiHandle()
 	wait_procthread();
 	delete m_pFreeChain;
 	delete m_pProcChain;
+	delete m_pPeriodicFreeChain;
+	delete m_pPeriodicProcChain;
 }
 static CLogger *sg_log = NULL;
 void InitLogger()
@@ -301,6 +304,11 @@ void ApiHandle::init_messageChain()
 	DirectorMessages::MSG msg;
 	m_pFreeChain = new CMessageChain(new CGenericMsg(msg));
 	m_pProcChain = new CMessageChain(new CGenericMsg(msg));
+
+	//--add 20160904
+	m_pPeriodicFreeChain = new CMessageChain(new CGenericMsg(msg));
+	m_pPeriodicProcChain = new CMessageChain(new CGenericMsg(msg));
+	//--end
 }
 void ApiHandle::init_exchanges()
 {
@@ -594,32 +602,32 @@ DWORD ApiHandle::add_connectionstatus_message(DirectorMessages::MSG &msg)
 {
 	std::string str;
 	char m_sRet[2048];
-	DirectorStatus::State stat;
-
-	msg.get_attribute(DirectorTags::ConnectionStatus, stat);
-	if ((stat != DirectorStatus::Online) && (stat != DirectorStatus::Offline))
+// 	DirectorStatus::State stat;
+// 
+// 	msg.get_attribute(DirectorTags::ConnectionStatus, stat);
+	msg.get_attribute(DirectorTags::ConnectionStatus, ConnectionState_);//--add 20160904
+	if ((ConnectionState_ != DirectorStatus::Online) && (ConnectionState_ != DirectorStatus::Offline))
 	{
-		sprintf_s(m_sRet, "add_connectionstatus_message:Unknownstatus:%d", (int)stat);
+		sprintf_s(m_sRet, "add_connectionstatus_message:Unknownstatus:%d", (int)ConnectionState_);
 		RLog(m_sRet);
 		return 0;
 	}
 //	DWORD evID = ++m_dwEventID;
 	CBaseMessage *pmsg;
 
-//	msg.add_attribute(DirectorTags::Msg_Event, evID);
-	return 0L;
+// 	msg.add_attribute(DirectorTags::Msg_Event, evID);
+// 	return 0L;
 	
 	pmsg = m_pFreeChain->AllocatePop(CBaseMessage::ConnectionStatus);
 	if (NULL == pmsg){
-		pmsg = new CConnectionStatusMsg(stat);
+		pmsg = new CConnectionStatusMsg(ConnectionState_);
 	}
 	else{
-		(dynamic_cast<CConnectionStatusMsg*>(pmsg))->SetConnectionStatus(stat);
+		(dynamic_cast<CConnectionStatusMsg*>(pmsg))->SetConnectionStatus(ConnectionState_);
 	}
 //	pmsg->SetConnectionStatus(msg,stat);
 
 	m_pProcChain->Push(pmsg);
-
 	/*---------------------------------------------------------*/
 	/* add log */
 
@@ -629,12 +637,12 @@ DWORD ApiHandle::add_connectionstatus_message(DirectorMessages::MSG &msg)
 		RLog(m_sRet);
 		return 0;
 	}
-	sprintf_s(m_sRet, "add_connectionstatus_message:MessageID:%d(%s),%d,", msg.MessageId_, str.c_str(),(int)stat);
-	if (stat == DirectorStatus::Online)
+	sprintf_s(m_sRet, "add_connectionstatus_message:MessageID:%d(%s),%d,", msg.MessageId_, str.c_str(), (int)ConnectionState_);
+	if (ConnectionState_ == DirectorStatus::Online)
 	{
 		strcat_s(m_sRet, "Online)");
 	}
-	if (stat == DirectorStatus::Offline)
+	if (ConnectionState_ == DirectorStatus::Offline)
 	{
 		strcat_s(m_sRet, "Offline)");
 	}

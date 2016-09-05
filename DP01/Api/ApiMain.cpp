@@ -12,8 +12,8 @@ using namespace DirectorSignatures;
 extern "C" {
 
 __declspec(dllexport) long AttributeNumericGet(unsigned long type, int index, int field, long defaultValue) {
-	api->AttributeNumericGet(type, index, field, defaultValue);
-   return 0;
+//    RLog("AttributeNumericGet");
+	return api->AttributeNumericGet(type, index, field, defaultValue);
 }
 
 __declspec(dllexport) bool AttributeStringGet(unsigned long type, int index, int field, std::wstring& sAttributeValue) {
@@ -77,8 +77,7 @@ __declspec(dllexport) int ProcessSyncMessage(DirectorMessages::MSG& msg) {
 
 __declspec(dllexport) unsigned long QuoteGet(PCWSTR pSymbol,int AssetType,PBYTE pFields, LCID locale_id, CallbackQuoteGet pCB, unsigned long UserData, bool bPeriodic) {
     RLog("QuoteGet");
-	api->QuoteGet(pSymbol, AssetType, pFields, locale_id, pCB, UserData, bPeriodic);
-    return 0;
+	return api->QuoteGet(pSymbol, AssetType, pFields, locale_id, pCB, UserData, bPeriodic);
 }
 
 __declspec(dllexport) int QuoteModify(unsigned long event, unsigned char* pFields, LCID locale_id) {
