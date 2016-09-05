@@ -49,7 +49,7 @@ char *CLogger::InitLogger(const char *sPath, const char *sBaseName, const char *
 	time_t	now;
 	struct tm	*timeinfo,timeinfo_buffer;
 	int		iLen;
-	char		m_sPath[512];
+	char		m_sPath[1024];//20160905
 	char		m_sTime[80];
 
 #pragma warning(push)
