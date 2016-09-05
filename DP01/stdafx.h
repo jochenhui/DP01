@@ -40,4 +40,5 @@
 #pragma warning(disable: 4503) // boost variant
 #include <algorithm>    // for max()
 #include "DirectorSignatures.h"
+#include <boost/unordered_map.hpp>
 
