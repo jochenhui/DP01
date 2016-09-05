@@ -13,7 +13,7 @@
 #include <libkern/OSAtomic.h>
 #endif
 #include <stdio.h>
-#ifdef WIN32
+#ifdef _WINDOWS
 #include <process.h>
 #include <Windows.h>
 #endif

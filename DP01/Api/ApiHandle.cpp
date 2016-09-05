@@ -412,7 +412,6 @@ int ApiHandle::ProcessMesssage(DirectorMessages::MSG &msg)
 void ApiHandle::ExchangesGet(std::map<unsigned short, std::wstring>& ex_map)
 {
 	char m_sRet[2048];
-	char m_sTmp[1024];
 
 	RLog("ExchangesGet(3 exchanges)");
 	sprintf_s(m_sRet, "\tIndex:%d,%s", TICKREC_BASE::MakeLocalExchangeIndex(m_Exchanges[0].m_cIndex), (const char*)CW2A(m_Exchanges[0].m_wsShortName));
