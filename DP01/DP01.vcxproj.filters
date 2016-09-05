@@ -1,0 +1,151 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="源文件">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="头文件">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="资源文件">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="源文件\Direcotr">
+      <UniqueIdentifier>{0cf6eae5-0d54-4e84-b824-86d23187cfb3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\Logger">
+      <UniqueIdentifier>{8c3c7c8d-3474-4ae5-8585-1c92b91210c4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="源文件\Api">
+      <UniqueIdentifier>{d698d821-42ed-41e6-855f-e0f5443c4a99}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="DP01.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Logger\_CLocker.cpp">
+      <Filter>源文件\Logger</Filter>
+    </ClCompile>
+    <ClCompile Include="Logger\Logger.cpp">
+      <Filter>源文件\Logger</Filter>
+    </ClCompile>
+    <ClCompile Include="Api\ApiMain.cpp">
+      <Filter>源文件\Api</Filter>
+    </ClCompile>
+    <ClCompile Include="Api\BaseMessage.cpp">
+      <Filter>源文件\Api</Filter>
+    </ClCompile>
+    <ClCompile Include="Api\MessageChain.cpp">
+      <Filter>源文件\Api</Filter>
+    </ClCompile>
+    <ClCompile Include="Api\ApiHandle.cpp">
+      <Filter>源文件\Api</Filter>
+    </ClCompile>
+    <ClCompile Include="Api\ApiHandle2.cpp">
+      <Filter>源文件\Api</Filter>
+    </ClCompile>
+    <ClCompile Include="Logon.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="DP01.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Director\DirectorSignatures.h">
+      <Filter>源文件\Direcotr</Filter>
+    </ClInclude>
+    <ClInclude Include="Director\period.h">
+      <Filter>源文件\Direcotr</Filter>
+    </ClInclude>
+    <ClInclude Include="Director\rt_defs=Director.h">
+      <Filter>源文件\Direcotr</Filter>
+    </ClInclude>
+    <ClInclude Include="Director\rt_strct=Director.h">
+      <Filter>源文件\Direcotr</Filter>
+    </ClInclude>
+    <ClInclude Include="Director\rt_strct=HistData.h">
+      <Filter>源文件\Direcotr</Filter>
+    </ClInclude>
+    <ClInclude Include="Director\rt_strct=RTCCADATA.h">
+      <Filter>源文件\Direcotr</Filter>
+    </ClInclude>
+    <ClInclude Include="Director\rt_strct=RTCORRECTIONS.h">
+      <Filter>源文件\Direcotr</Filter>
+    </ClInclude>
+    <ClInclude Include="Director\rt_strct=RTECNBOOK.h">
+      <Filter>源文件\Direcotr</Filter>
+    </ClInclude>
+    <ClInclude Include="Director\rt_strct=RTFUND.h">
+      <Filter>源文件\Direcotr</Filter>
+    </ClInclude>
+    <ClInclude Include="Director\rt_strct=RTGlobalNews.h">
+      <Filter>源文件\Direcotr</Filter>
+    </ClInclude>
+    <ClInclude Include="Director\rt_strct=RTINTRADAY_PRICEREC.h">
+      <Filter>源文件\Direcotr</Filter>
+    </ClInclude>
+    <ClInclude Include="Director\rt_strct=RTPRICEREC.h">
+      <Filter>源文件\Direcotr</Filter>
+    </ClInclude>
+    <ClInclude Include="Director\rt_strct=Scanning.h">
+      <Filter>源文件\Direcotr</Filter>
+    </ClInclude>
+    <ClInclude Include="Director\rt_strct=Session.h">
+      <Filter>源文件\Direcotr</Filter>
+    </ClInclude>
+    <ClInclude Include="Director\rt_strct=TICKREC.h">
+      <Filter>源文件\Direcotr</Filter>
+    </ClInclude>
+    <ClInclude Include="Logger\_CLocker.h">
+      <Filter>源文件\Logger</Filter>
+    </ClInclude>
+    <ClInclude Include="Logger\Logger.h">
+      <Filter>源文件\Logger</Filter>
+    </ClInclude>
+    <ClInclude Include="Api\BaseMessage.h">
+      <Filter>源文件\Api</Filter>
+    </ClInclude>
+    <ClInclude Include="Api\MessageChain.h">
+      <Filter>源文件\Api</Filter>
+    </ClInclude>
+    <ClInclude Include="Api\ApiHandle.h">
+      <Filter>源文件\Api</Filter>
+    </ClInclude>
+    <ClInclude Include="Logon.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="DP01.def">
+      <Filter>源文件</Filter>
+    </None>
+    <None Include="res\DP01.rc2">
+      <Filter>资源文件</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="DP01.rc">
+      <Filter>资源文件</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+</Project>
